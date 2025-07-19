@@ -1,0 +1,179 @@
+{% extends 'navbar.html' %}
+{% block navbar %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bookstore Reviews</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        .review-container {
+            max-width: 600px;
+            margin: auto;
+        }
+        .review {
+            border: 3px solid #0c0c0c;
+            padding: 10px;
+            margin-bottom: 15px;
+        }
+        form {
+            margin-top: 20px;
+        }
+        .stars-container {
+            display: flex;
+            margin-bottom: 10px;
+        }
+        .star {
+            font-size: 24px;
+            cursor: pointer;
+            color: yellow;
+        }
+        .star:hover {
+            color: yellow;
+        }
+        h1 {
+            font-weight: bold;
+        }
+        label {
+            display: block;
+            margin-bottom: 5px;
+        }
+        input,
+        textarea,
+        button {
+            width: 100%;
+            padding: 8px;
+            margin-bottom: 10px;
+            box-sizing: border-box;
+        }
+    </style>
+</head>
+<body>
+
+<div class="review-container">
+    <h1>Thoughts on "Bookstore Review: Book Bliss"</h1>
+
+    <!-- Existing Reviews -->
+    <div class="review">
+        <h4>Aliza</h4>
+        <div class="stars-container">
+            <span class="star" onclick="rateBook(this)">★</span>
+            <span class="star" onclick="rateBook(this)">★</span>
+            <span class="star" onclick="rateBook(this)">★</span>
+            <span class="star" onclick="rateBook(this)">★</span>
+            <span class="star" onclick="rateBook(this)">★</span>
+        </div>
+        <p>Great selection of books! The bookstore has a cozy atmosphere, and the staff is friendly and helpful.</p>
+    </div>
+
+    <div class="review">
+        <h4>Hania</h4>
+        <div class="stars-container">
+            <span class="star" onclick="rateBook(this)">★</span>
+            <span class="star" onclick="rateBook(this)">★</span>
+            <span class="star" onclick="rateBook(this)">★</span>
+            <span class="star" onclick="rateBook(this)">★</span>
+            <span class="star" onclick="rateBook(this)">★</span>
+        </div>
+        <p>Ordered books online, and the delivery was quick. Excellent service!</p>
+    </div>
+
+    <div class="review">
+        <h4>MOHIB</h4>
+        <div class="stars-container">
+            <span class="star" onclick="rateBook(this)">★</span>
+            <span class="star" onclick="rateBook(this)">★</span>
+            <span class="star" onclick="rateBook(this)">★</span>
+            <span class="star" onclick="rateBook(this)">★</span>
+            <span class="star" onclick="rateBook(this)">★</span>
+        </div>
+        <p>Excellent serviceS fast delivery enjoyed all books!</p>
+    </div>
+
+    <!-- Add Review Form -->
+    <form id="reviewForm">
+        <h2>Add Your Review</h2>
+        <div class="stars-container">
+            <span class="star" onclick="rateBook(this)">★</span>
+            <span class="star" onclick="rateBook(this)">★</span>
+            <span class="star" onclick="rateBook(this)">★</span>
+            <span class="star" onclick="rateBook(this)">★</span>
+            <span class="star" onclick="rateBook(this)">★</span>
+        </div>
+
+        <label for="reviewerName">Your Name:</label>
+        <input type="text" id="reviewerName" required>
+
+        <label for="reviewContent">Your Review:</label>
+        <textarea id="reviewContent" rows="4" required></textarea>
+
+        <button type="button" onclick="addReview()">Submit Review</button>
+    </form>
+</div>
+{% endblock navbar %}
+
+<script>
+    function rateBook(star) {
+        // Reset all stars to default color
+        var stars = document.querySelectorAll('.star');
+        stars.forEach(function (s) {
+            s.style.color = 'black';
+        });
+
+        // Highlight the clicked star and all previous stars
+        var selectedStarIndex = Array.from(star.parentNode.children).indexOf(star);
+        for (var i = 0; i <= selectedStarIndex; i++) {
+            stars[i].style.color = 'yellow';
+        }
+    }
+
+    function addReview() {
+        // Get values from the form
+        var reviewerName = document.getElementById('reviewerName').value;
+        var reviewContent = document.getElementById('reviewContent').value;
+        var stars = document.querySelectorAll('.star');
+
+        // Count the number of highlighted stars (rating)
+        var rating = Array.from(stars).filter(function (star) {
+            return star.style.color === 'yellow';
+        }).length;
+
+        // Create a new review element with the rating
+        var newReview = document.createElement('div');
+        newReview.classList.add('review');
+        newReview.innerHTML = '<h3>' + reviewerName + '</h3>' +
+                              '<div class="stars-container">' + getStarIcons(rating) + '</div>' +
+                              '<p>' + reviewContent + '</p>';
+
+        // Append the new review to the review container
+        var reviewContainer = document.querySelector('.review-container');
+        reviewContainer.appendChild(newReview);
+
+        // Clear the form fields and reset star colors
+        document.getElementById('reviewerName').value = '';
+        document.getElementById('reviewContent').value = '';
+        stars.forEach(function (star) {
+            star.style.color = 'black';
+        });
+    }
+
+    // Helper function to generate star icons based on the rating
+    function getStarIcons(rating) {
+        var stars = '';
+        for (var i = 0; i < 5; i++) {
+            if (i < rating) {
+                stars += '★';
+            } else {
+                stars += '☆';
+            }
+        }
+        return stars;
+    }
+</script>
+
+</body>
+</html>

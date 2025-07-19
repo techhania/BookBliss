@@ -1,0 +1,185 @@
+{% extends 'navbar.html' %}
+{% block navbar %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us</title>
+
+    <style>
+        /* Global Styles */
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f8f8f8;
+            color: #333;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #fff;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+            margin-top: 20px;
+        }
+
+        /* Header Styles */
+        h1 {
+            color: #4285f4;
+            margin-bottom: 10px;
+        }
+
+        h2 {
+            color: #333;
+            font-size: 1.5em;
+            margin-bottom: 15px;
+        }
+
+        /* Paragraph Styles */
+        p {
+            line-height: 1.6;
+            margin-bottom: 15px;
+        }
+
+        /* Heading Styles */
+        h3 {
+            color: #555;
+            margin-top: 20px;
+            background-color: #f0f0f0;
+            padding: 10px;
+            border-bottom: 2px solid #ddd;
+        }
+
+        /* Additional styling for subheadings */
+        h4 {
+            color: #777;
+            margin-top: 15px;
+            background-color: #f5f5f5;
+            padding: 8px;
+            border-bottom: 1px solid #ddd;
+        }
+
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h1>ABOUT US</h1>
+    <h2>WELCOME TO BOOK BLISS</h2>
+    <p>DELIVERING BOOKS TO YOU</p>
+
+    <p>At BOOK BLISS, we believe in the magic of books and the joy of getting lost in a good story.
+         Nestled in the heart of PAKISTAN, our little haven is more than just a bookstore – it's
+          a sanctuary for book lovers, dreamers, and anyone who believes in the enchantment 
+          that words on paper can bring.</p>
+
+    <h3>Our Story: Where Pages Come to Life</h3>
+    <p>Step inside and discover a world where every book has a story to tell, 
+        and every reader becomes a part of that tale. Founded by [Your Name], 
+        a passionate bookworm with a penchant for storytelling, 
+        BOOK BLISS is more than just a business; it's a celebration of the written word.</p>
+
+    <h4>STAY CONNECTED</h4>
+    <p>Join our bookish family on social media, and be the first to know about new arrivals upcoming events,
+        and the latest literary gossip. Follow us on [Facebook, Instagram, Twitter] (@BOOK BLISS)
+         and become a part of our growing community</p>
+
+    <h4>Join Our Community</h4>
+    <p>At BOOK BLISS, we believe that every book has its reader, and every reader has their book. 
+        Come, let's embark on this literary journey together.</p>
+
+    <h3>Meet the Founders</h3>
+    <p>Happy reading!<br>ALIZA & HANIA</p>
+</div>
+{% endblock navbar %}
+
+</body>
+</html>
+ <style>
+        /* Add your custom styles here */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            background-color: #f8f8f8;
+            color: #333;
+        }
+        .container {
+            max-width: 600px;
+            margin: auto;
+            padding: 20px;
+            background-color: #fff;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+            margin-top: 20px;
+        }
+        h2 {
+            color: #4CAF50;
+            margin-bottom: 20px;
+        }
+        p {
+            line-height: 1.6;
+            margin-bottom: 20px;
+        }
+        form {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        label {
+            margin-bottom: 8px;
+            color: #333;
+        }
+        input {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 12px;
+            box-sizing: border-box;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+        button {
+            padding: 12px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        button:hover {
+            background-color: #45a049;
+        }
+        .success-message {
+            color: #4CAF50;
+            margin-top: 10px;
+            display: none;
+        }
+  </style>
+
+
+<div class="container">
+    <h2>Subscribe And Stay Updated</h2>
+    <p>Subscribe to our newsletter and stay updated on the latest books, promotions, and events.</p>
+
+    <form id="subscribeForm">
+        <label for="email">Enter your email:</label>
+        <input type="email" id="email" name="email" placeholder="Your email" required>
+        <button type="button" onclick="subscribe()">Subscribe</button>
+    </form>
+
+    <div id="successMessage" class="success-message">
+        Subscription successful! Thank you for subscribing.
+    </div>
+</div>
+
+<script>
+    function subscribe() {
+        // You can add your subscription logic here
+        // For simplicity, I'm just displaying the success message
+        document.getElementById('subscribeForm').style.display = 'none';
+        document.getElementById('successMessage').style.display = 'block';
+    }
+</script>

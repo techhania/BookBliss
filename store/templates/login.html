@@ -1,0 +1,105 @@
+{% extends 'navbar.html' %}
+{% block navbar %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login Page</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background: url('/static/images/bcimage.jpg') center center fixed;
+            background-size: cover;
+            font-family: Arial, sans-serif;
+        }
+
+        .navbar {
+            background-color: #333;
+            padding: 15px;
+            color: white;
+            text-align: center;
+        }
+
+        .container {
+            background: rgba(0, 0, 0, 0.7);
+            padding: 20px;
+            border-radius: 10px;
+            margin-top: 50px;
+            max-width: 400px;
+            margin: 0 auto; /* Center-align the container */
+            text-align: center; /* Center-align text inside the container */
+        }
+
+        label {
+            color: white;
+        }
+
+        input {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            background-color: #f8f8f8;
+            color: #333;
+        }
+
+        .btn {
+            background-color: #007bff;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .alert {
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+        {% for message in messages %}
+        <div class="alert alert-{{ message.tags }} alert-dismissible fade show" style="color: rgb(182, 33, 33);" role="alert">
+            <strong>Message:</strong> {{ message }}
+        </div>
+        {% endfor %}
+
+    <div class="container">
+        <form id="loginForm" action="/login" method="post" onsubmit="return validateForm()">
+            {% csrf_token %}
+            <label for="email">Email : </label>
+            <input type="text" name="email" id="email" placeholder="Enter user Email">
+            <br>
+            <br>
+            <label for="password">Password : </label>
+            <input type="password" name="password" id="password" placeholder="Enter user password">
+            <br>
+            <br>
+            <input type="submit" class="btn btn-outline-primary">
+        </form>
+    </div>
+
+    {% endblock navbar %}
+
+    <script>
+        function validateForm() {
+            // Get values from the form
+            var email = document.getElementById('email').value;
+            var password = document.getElementById('password').value;
+
+            // Simple validation (you can replace this with more advanced validation)
+            if (email === '' || password === '') {
+                alert('Please enter both email and password');
+                return false;
+            }
+
+            // If everything is valid, allow the form submission
+            return true;
+        }
+    </script>
+
+</body>
+</html>

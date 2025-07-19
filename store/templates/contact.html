@@ -1,0 +1,54 @@
+{% extends 'navbar.html' %}
+{% block navbar %}
+<style>
+  /* Your existing CSS styles */
+
+  .container {
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #f8f9fa;
+    border: 1px solid #dee2e6;
+    border-radius: 5px;
+  }
+
+  /* Add styles for the main heading */
+  h1 {
+    text-align: center;
+    color: #007bff;
+  }
+</style>
+
+<div class="container">
+  <!-- Main heading for the contact form -->
+  <h1>Contact Us</h1>
+
+  <form action="" method="post">
+    {% csrf_token %}
+    <div class="form-group">
+      <span>Name</span>
+      <input class="form-control" type="text" name="name" required>
+    </div><br>
+    <div class="form-group">
+      <span>Email</span>
+      <input class="form-control" type="email" name="email" required>
+    </div><br>
+    <div class="form-group">
+      <span>Mobile</span>
+      <input class="form-control" type="number" name="mobile" required>
+    </div><br>
+    <div class="form-group">
+      <span>Description</span>
+      <textarea class="form-control" name="textarea" id="" cols="30" rows="5" required></textarea>
+    </div><br>
+    <input class="btn btn-primary" type="submit" name="submit">
+  </form>
+  {% if messages %}
+  <ul class="messages">
+    {% for message in messages %}
+    <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+    {% endfor %}
+  </ul>
+  {% endif %}
+</div>
+{% endblock navbar %}
